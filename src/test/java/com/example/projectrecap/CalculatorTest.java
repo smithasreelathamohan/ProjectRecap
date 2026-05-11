@@ -30,7 +30,6 @@ class CalculatorTest {
         log.info("Result from " + a + "+" + b + " calculated is = " + result);
         assertEquals(expected, result, "\nFailed: " + a + " + " + b + " should be = " + expected
                 + " but actual result calculated is " + result);
-       
 
     }
 
@@ -55,7 +54,7 @@ class CalculatorTest {
     @CsvSource({
             "10,2,5",
             "20,4,5",
-            "9,3,8"
+            "9,3,3"
     })
     void divideTest(int a, int b, int expected) {
         int result = calc.divide(a, b);
