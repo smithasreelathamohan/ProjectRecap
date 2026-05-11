@@ -54,7 +54,7 @@ class CalculatorTest {
     @CsvSource({
             "10,2,5",
             "20,4,5",
-            "9,3,3"
+            "9,3,7"
     })
     void divideTest(int a, int b, int expected) {
         int result = calc.divide(a, b);
