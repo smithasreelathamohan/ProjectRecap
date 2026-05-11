@@ -7,7 +7,7 @@ public class CalculatorTestData {
 
     public static Stream<Arguments> additionData() {
         return Stream.of(Arguments.of(10,15,25),
-                Arguments.of(-7,-60,-66),
+                Arguments.of(-7,-60,-67),
                 Arguments.of(6,-50,-44),
                 Arguments.of(5.777,8.5,14.277000000000001));
     }
