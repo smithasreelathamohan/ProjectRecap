@@ -5,7 +5,8 @@ on:
 
     pull_request:
         branches: [ "main" ]
-
+permissions:
+  contents: write
 jobs:
     build:
 
@@ -45,8 +46,8 @@ jobs:
             name: allure-report
             path: allure-report
         
-        - name: Deploy Allure Report to GitHub Pages
+        - name: Deploy to GitHub Pages
           uses: peaceiris/actions-gh-pages@v4
           with:
             github_token: ${{ secrets.GITHUB_TOKEN }}
-            publish_dir: allure-report
+            publish_dir: ./allure-report
