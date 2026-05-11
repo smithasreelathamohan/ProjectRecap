@@ -25,10 +25,12 @@ class CalculatorTest {
     @ParameterizedTest(name = "Add {0} + {1} ")
     @MethodSource("com.example.projectrecap.CalculatorTestData#additionData")
     void addTest(double a, double b, double expected) {
+        log.info(a + "+" + b + " should be = " + expected);
         double result = calc.add(a, b);
+        log.info("Result from " + a + "+" + b + " calculated is = " + result);
         assertEquals(expected, result, "\nFailed: " + a + " + " + b + " should be = " + expected
                 + " but actual result calculated is " + result);
-        log.info(a + "+" + b + " should be = " + expected);
+       
 
     }
 

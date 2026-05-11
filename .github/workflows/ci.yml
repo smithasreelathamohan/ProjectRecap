@@ -20,8 +20,27 @@ jobs:
             distribution: 'temurin'
             cache: 'maven'
 
-        - name: Build with Maven
-          run: mvn -B package --file pom.xml
-
         - name: Run tests
-          run: mvn test
+          run: mvn clean test
+
+        - name: Upload Test Reports
+          uses: actions/upload-artifact@v4
+          if: always()
+          with:
+            name: test-reports
+            path: target/surefire-reports/
+
+        - name: Install Allure CLI
+          run: |
+            curl -o allure.tgz -L https://repo.maven.apache.org/maven2/io/qameta/allure/allure-commandline/2.27.0/allure-commandline-2.27.0.tgz
+            tar -zxvf allure.tgz
+
+        - name: Generate Allure report
+          run: |
+            ./allure-2.27.0/bin/allure generate target/allure-results -o allure-report --clean
+
+        - name: Upload Allure Report as Artifact
+          uses: actions/upload-artifact@v4
+          with:
+            name: allure-report
+            path: allure-report
